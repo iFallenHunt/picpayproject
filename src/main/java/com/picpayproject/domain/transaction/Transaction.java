@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity(name = "transactions")
 @Table(name = "transactions")
@@ -27,5 +28,5 @@ public class Transaction {
     private User sender;
     @ManyToOne
     private User receiver;
-
+    private LocalDateTime timeStamp;
 }
