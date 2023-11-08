@@ -5,14 +5,9 @@ import com.picpayproject.domain.user.User;
 import com.picpayproject.dtos.TransactionDTO;
 import com.picpayproject.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 @Service
 public class TransactionService {
@@ -37,7 +32,7 @@ public class TransactionService {
         * */
         boolean isAuthorized = this.authService.authorizeTransaction(sender, transaction.value());
         if (!isAuthorized) {
-            throw new Exception("Transação não autorizada\n " + "Unauthorized transaction");
+            throw new Exception("Transação não autorizada");
         }
 
         /*
@@ -73,8 +68,5 @@ public class TransactionService {
                 "Transação recebida com sucesso\n" + "Transaction received successfully");
 
         return newTransaction;
-
     }
-
-
 }
